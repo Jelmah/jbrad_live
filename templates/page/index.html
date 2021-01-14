@@ -1,0 +1,98 @@
+
+{% extends "shared/base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+  My Index
+{% endblock title %}
+
+{% block main %}
+  <section class="banner">
+
+    <div style="width: 60%; margin: 0 auto; text-align: center; background-color: azure; padding: 20px;">
+      <h2>Searching Of Property Just Got So Easy</h2>
+      <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. In mollitia ipsam deserunt illum officiis deleniti eius praesentium? Suscipit magni omnis odit quisquam maxime delectus illum ex, exercitationem reprehenderit possimus modi repellat itaque, nihil repudiandae.</h5>
+      <br>
+      <form action="{% url 'lsearch' %}">
+        <div style="display: grid; grid-template-columns: 2fr 2fr 1fr;">
+          <input style="padding: 15px; margin: 10px;" type="text" placeholder="Keyword" value="" name="Keyword" class="form-control">
+          <input style="padding: 15px; margin: 10px;" type="text" placeholder="City" value="" name="City" class="form-control">
+          <input width="100px" style="padding: 15px; margin: 10px;" type="text" placeholder="State" value="" name="State" class="form-control">
+        </div><br><br>
+        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+          <input style="padding: 15px; margin: 10px;" type="text" placeholder="Bedrooms" value="" name="Bedrooms" class="form-control">
+          <input style="padding: 15px; margin: 10px;" type="text" placeholder="Max-price" value="" name="Max-price" class="form-control">
+        </div><br><br>
+        <input type="submit" value="Search Now" class="btn btn-success">
+      </form>
+    </div>
+  </section>
+  <section style="margin: 10px auto; width: 60%;">
+    <h2 style="text-align: center;">Latest Listings</h2>
+    <div class="latestlistings" style="display: grid;grid-template-columns: 1fr 1fr 1fr;">
+      
+      {% if listings %}
+        {% for listing in listings %}
+        <div style="border: 1px solid blue; padding: 0px 15px; margin: 0 10px;">
+          <img width="300px" height="200px" src="{{listing.photo_main.url}}" alt="">
+          <div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr;">
+              <h4 style="background-color: green;">{{listing.price | intcomma}}</h4>
+              <h4>{{listing.title}}</h4>
+            </div>
+            <h5>{{listing.address}} {{listing.zipcode}}</h5>
+          </div>
+          <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr;">
+              <h5>Sqft:{{listing.sqft}}</h5>
+              <h5>Garage: {{listing.garage}}</h5>
+              <h5>Bedroom: {{listing.bedrooms}}</h5>
+              <h5>Bathroom: {{listing.bathrooms}}</h5>
+            </div>
+            <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <h4>{{listing.realtor}}</h4>
+            <h6>{{listing.list_date | timesince}}</h6>
+            <a href="{% url 'listing' listing.id %}"><button style="width: 80%; padding: 10px; background-color: blue; margin: 0px 0px 0px 33px;">More Info</button></a>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div>
+          <p>No Listing is available</p>
+        </div>
+      {% endif %}
+      
+      
+    </div>
+  </section>
+
+  <section style="display: grid; grid-template-columns: 1fr 1fr 1fr; width: 80%; margin: 0 auto; background-color: cadetblue;">
+    <div style="text-align: center; padding: 15px;">
+      <i></i>
+      <h4>Consulting Services</h4>
+      <h5> culpa corrupti. Ratione unde culpa ut illo iste amet pariatur expedita voluptatum, temporibus nam ab ipsum aliquam fuga? Corrupti similique cumque inventore sapiente voluptatum aspernatur distinctio vitae adipisci perferendis harum.</h5>
+    </div>
+    <div style="text-align: center; padding: 15px;">
+      <i></i>
+      <h4>Property Management</h4>
+      <h5> culpa corrupti. Ratione unde culpa ut illo iste amet pariatur expedita voluptatum, temporibus nam ab ipsum aliquam fuga? Corrupti similique cumque inventore sapiente voluptatum aspernatur distinctio vitae adipisci perferendis harum.</h5>
+    </div>
+    <div style="text-align: center; padding: 15px;">
+      <i></i>
+      <h4>Renting and Selling</h4>
+      <h5> culpa corrupti. Ratione unde culpa ut illo iste amet pariatur expedita voluptatum, temporibus nam ab ipsum aliquam fuga? Corrupti similique cumque inventore sapiente voluptatum aspernatur distinctio vitae adipisci perferendis harum.</h5>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock main %}

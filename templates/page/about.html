@@ -1,0 +1,62 @@
+
+{% extends "shared/base.html" %}
+{% load static %}
+
+
+{% block title %}
+  My About
+{% endblock title %}
+
+{% block main %}
+  <section style="text-align: center; padding: 25px; background-color: rgb(160, 189, 243);margin-bottom: 25px;">
+    <h2>About Jestate</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ab magnam similique, iste nihil fugit?</p>
+  </section>
+  <section style="display: grid; grid-template-columns: 3fr 1fr; width: 70%; margin: 25px auto;">
+    <div>
+      <h3>We Search For The Better Home</h3>
+      <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi porro animi enim laudantium, explicabo aut molestiae quisquam! Neque non sapiente consectetur voluptas fuga.</h6>
+      <img width="800px" height="500px" src="{% static 'images/banner3.jpg' %}" alt="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero tenetur, quos asperiores nulla omnis dolor delectus ipsam aliquam recusandae pariatur doloremque possimus voluptatem totam deserunt dicta, repudiandae doloribus laudantium amet provident excepturi sequi? Quae quis, nemo facere voluptates iste praesentium.</p>
+    </div>
+    <div style="border: 1px solid blue; margin: 20px 20px 300px 20px; padding: 10px;">
+      <h4>Seller of the month</h4>
+      <img width="200px" height="250px" src="{{seller.photo.url}}" alt="best realtor">
+      <h5>{{seller.name}}</h5>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa error placeat eveniet optio blanditiis sit laboriosam, quod assumenda iusto, inventore id exercitationem!</p>
+    </div>
+  </section>
+  <section style="text-align: center; background-color: rgb(197, 211, 236); padding: 20px;">
+      <h3>We Work For You</h3>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam inventore, corporis optio qui culpa voluptatibus omnis ratione dignissimos?</p>
+      <!-- <input type="search" value="See Our featured listings" class="btn btn-success"> -->
+      <button type="search" class="btn btn-success"><a href="{% url 'listings' %}">See our featured listings</a></button>
+    </section>
+
+    <section style="text-align: center;">
+      <h3>Our Team</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; width: 60%; margin: 0 auto;">
+        
+        {% if realtor %}
+          {% for realtor in realtor %}
+          <div>
+            <img width="200px" height="250px" style="border-radius: 50%;" src="{{realtor.photo.url}}" alt="">
+            <h4>{{realtor.name}}</h4>
+            <h5>Realtor</h5>
+            <div style="width: 95%; height: 0px; margin: 10px auto; border: 1px solid blue;"></div>
+            <p> <i></i> {{realtor.phone}}</p>
+            <p> <i></i> {{realtor.email}}</p>
+          </div>
+          {% endfor %}
+        {% else %}
+          No Realtor agent as at now
+        {% endif %}
+        
+        
+      </div>
+    </section>
+
+
+
+
+{% endblock main %}

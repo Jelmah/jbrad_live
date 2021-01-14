@@ -1,0 +1,55 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- customized css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %} {% endblock title %}</title>
+  </head>
+  <body>
+
+    <header id="header">
+        <nav id="nav">
+            <img width="80px" src="{% static 'images/jestatelogo.png' %}" alt="logo">
+            <ul id="navul">
+                <li 
+                  {% if '' in request.path %}
+                    class="navli active"
+                  {% else %}
+                    class="navli"
+                  {% endif %}
+                  
+                ><a href="{% url 'index' %}">Home</a></li>
+                <li class="navli"><a href="{% url 'about' %}">About Us</a></li>
+                <li class="navli"><a href="{% url 'listings' %}">Featured listings</a></li>
+                <li class="navli" style="padding-left: 380px;"><a href="{% url 'index' %}">Register</a></li>
+                <li class="navli"><a href="{% url 'index' %}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block main %}
+          
+        {% endblock main %}
+    </main>
+
+    <footer>
+        <h4>&copf; Copyright at Grow_High reserve</h4>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

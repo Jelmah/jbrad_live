@@ -1,0 +1,172 @@
+{% extends "shared/base.html" %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}
+  Single listings page
+{% endblock title %}
+
+
+{% block main %}
+<section style="text-align: center; padding: 25px; background-color: rgb(160, 189, 243);margin-bottom: 25px;">
+  <h2>Browse Our Properties</h2>
+  <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel.</h5>
+</section>
+  <div class="breadcrumb">
+    <a href="{% url 'index' %}">Home/  </a>
+    <a href="{% url 'listings' %}">  listings</a>
+  </div>
+
+  <section>
+    <section style="margin: 10px auto; width: 60%;">
+
+      <div class="latestlistings" style="display: grid;grid-template-columns: 1fr 1fr 1fr;">
+        
+        {% for items in listings %}
+        <div style="border: 1px solid blue; padding: 0px 0px; margin: 20px 10px;">
+          <img width="308px" height="184px" src="{{items.photo_main.url}}" alt="">
+          <div style="padding: 0 15px;">
+            <div style="display: grid; grid-template-columns: 1fr 2fr;">
+              <h4 style="background-color: green; margin-right: 4px;">#{{items.price | intcomma}} </h4>
+              <h5>{{items.title}}</h5>
+            </div>
+            <h5>street..., code</h5>
+          </div>
+          <div style="width: 95%;  height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 0 15px;">
+              <h5>Sqft:{{items.sqft}}</h5>
+              <h5>Garage:{{items.garage}}</h5>
+              <h5>Bedroom:{{items.bedroom}}</h5>
+              <h5>Bathroom:{{items.bathroom}}</h5>
+            </div>
+            <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <h4 style="padding: 0 15px;">{{items.realtor}}</h4>
+            <h6 style="padding: 0 15px;">{{items.list_date}}</h6>
+            <a href="{% url 'listing' items.id %}"><button style="width: 80%; padding: 10px; background-color: blue; margin: 0px 0px 0px 33px;">More Info</button></a>
+        </div>
+        {% endfor %}
+
+
+
+
+
+
+
+<!-- 
+{% comment %}         
+        <div style="border: 1px solid blue; padding: 0px 15px;  margin: 20px 10px;">
+          <img src="" alt="">
+          <div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr;">
+              <h4>Amount</h4>
+              <h4>Building Name</h4>
+            </div>
+            <h5>street..., code</h5>
+          </div>
+          <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr;">
+              <h5>Sqft:</h5>
+              <h5>Garage:</h5>
+              <h5>Bedroom:</h5>
+              <h5>Bathroom:</h5>
+            </div>
+            <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <h4>Realtors</h4>
+            <h6>5 days ago</h6>
+            <button style="width: 80%; padding: 10px; background-color: blue; margin: 0px 0px 0px 33px;">More Info</button>
+        </div>
+        <div style="border: 1px solid blue; padding: 0px 15px; margin: 20px 10px;">
+          <img src="" alt="">
+          <div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr;">
+              <h4>Amount</h4>
+              <h4>Building Name</h4>
+            </div>
+            <h5>street..., code</h5>
+          </div>
+          <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr;">
+              <h5>Sqft:</h5>
+              <h5>Garage:</h5>
+              <h5>Bedroom:</h5>
+              <h5>Bathroom:</h5>
+            </div>
+            <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <h4>Realtors</h4>
+            <h6>5 days ago</h6>
+            <button style="width: 80%; padding: 10px; background-color: blue; margin: 0px 0px 0px 33px;">More Info</button>
+        </div>
+        <div style="border: 1px solid blue; padding: 0px 15px; margin: 20px 10px;">
+          <img src="" alt="">
+          <div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr;">
+              <h4>Amount</h4>
+              <h4>Building Name</h4>
+            </div>
+            <h5>street..., code</h5>
+          </div>
+          <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr;">
+              <h5>Sqft:</h5>
+              <h5>Garage:</h5>
+              <h5>Bedroom:</h5>
+              <h5>Bathroom:</h5>
+            </div>
+            <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <h4>Realtors</h4>
+            <h6>5 days ago</h6>
+            <button style="width: 80%; padding: 10px; background-color: blue; margin: 0px 0px 0px 33px;">More Info</button>
+        </div>
+        <div style="border: 1px solid blue; padding: 0px 15px; margin: 20px 10px;">
+          <img src="" alt="">
+          <div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr;">
+              <h4>Amount</h4>
+              <h4>Building Name</h4>
+            </div>
+            <h5>street..., code</h5>
+          </div>
+          <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr;">
+              <h5>Sqft:</h5>
+              <h5>Garage:</h5>
+              <h5>Bedroom:</h5>
+              <h5>Bathroom:</h5>
+            </div>
+            <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <h4>Realtors</h4>
+            <h6>5 days ago</h6>
+            <button style="width: 80%; padding: 10px; background-color: blue; margin: 0px 0px 0px 33px;">More Info</button>
+        </div>
+        <div style="border: 1px solid blue; padding: 0px 15px; margin: 20px 10px;">
+          <img src="" alt="">
+          <div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr;">
+              <h4>Amount</h4>
+              <h4>Building Name</h4>
+            </div>
+            <h5>street..., code</h5>
+          </div>
+          <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr;">
+              <h5>Sqft:</h5>
+              <h5>Garage:</h5>
+              <h5>Bedroom:</h5>
+              <h5>Bathroom:</h5>
+            </div>
+            <div style="width: 95%; height: 1px; margin: 10px auto; border: 1px solid blue;"></div>
+            <h4>Realtors</h4>
+            <h6>5 days ago</h6>
+            <button style="width: 80%; padding: 10px; background-color: blue; margin: 0px 0px 0px 33px;">More Info</button>
+        </div> {% endcomment %} -->
+      </div>
+    </section>
+  </section>
+
+
+
+
+
+
+
+{% endblock main %}

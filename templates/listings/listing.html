@@ -1,0 +1,54 @@
+{% extends "shared/base.html" %}
+{% load humanize %}
+
+{% block title %}
+  Single listings page
+{% endblock title %}
+
+
+{% block main %}
+  <section style="text-align: center; background-color: blue; padding: 25px;">
+    <h2>{{listing.title}}   </h2><br>
+    <h3>{{listing.address}}  {{listing.city}} {{listing.state}} {{listing.zipcode}}</h3>
+  </section> 
+  <section style="width: 70%; margin: 30px auto;">
+    <div class="breadcrumbs">
+      <br>
+      <h4><a href="{% url 'index' %}">Home </a>/<a href="{% url 'listings' %}">Listings </a>/<a href="">{{listing.title}}</a></h4>
+    </div><br><br>
+    <button><a  style="padding:20px 15px; margin-top: 15px; text-decoration: none;" href="{% url 'listings' %}">Go back to listings</a></button>
+    <br><br>
+    <section style="display: grid; grid-template-columns: 3fr 1fr;">
+      <div>
+        <img width="700px" height="400px" src="{{listing.photo_main.url}}" alt=""><br><br>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; font-size: 20px;">
+          <div>
+            <div style="border-bottom: 2px sodid blue; padding-bottom: 12px;"><h4>Asking Price:_ _ _ _<span style="justify-self: right;">${{listing.price | intcomma}}</span></h4></div>
+            <div style="border-bottom: 2px sodid blue; padding-bottom: 12px;"><h4>Bedroom:_ _ _ _<span style="justify-self: right;">{{listing.bedrooms}}</span></h4></div>
+            <div style="border-bottom: 2px sodid blue; padding-bottom: 12px;"><h4>Bathroom:_ _ _ _<span style="justify-self: right;">{{listing.bathrooms}}</span></h4></div>
+            <div style="border-bottom: 2px sodid blue; padding-bottom: 12px;"><h4>Garage:_ _ _ _<span style="justify-self: right;">{{listing.garage}}</span></h4></div>
+          </div>
+          <div>
+            <div style="border-bottom: 2px sodid blue; padding-bottom: 12px;"><h4>Sqft:_ _ _ _<span style="justify-self: right;">{{listing.sqft}}</span></h4></div>
+            <div style="border-bottom: 2px sodid blue; padding-bottom: 12px;"><h4>Lot-size:_ _ _ _<span style="justify-self: right;">{{listing.lot_size}}</span></h4></div>
+            <div style="border-bottom: 2px sodid blue; padding-bottom: 12px;"><h4>Listing_date:_ _ _ _<span style="justify-self: right;">{{listing.list_date}}</span></h4></div>
+            <div style="border-bottom: 2px sodid blue; padding-bottom: 12px;"><h4>Realtor:_ _ _ _<span style="justify-self: right;">{{listing.realtor}}</span></h4></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="border: 1px solid blue; box-sizing: content-box; font-size: 20px; text-align: center;">
+        <h4>Realtor To Property</h4>
+        <img height="300px" width="250px" src="{{listing.realtor.photo.url}}" alt="Realtor picture">
+        <h4><b>Property Realtor</b></h4><br>
+        <h5><strong>{{listing.realtor}}</strong></h5><br>
+        <button style="padding: 10px;background-color: blue;text-decoration: none; font-size: 18px;"><a style="padding: 10px;background-color: blue;text-decoration: none;" href="">Make an Enquiry</a></button><br>
+        
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <br><br>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ad est vitae provident deleniti dolorum beatae facilis, aperiam et! Voluptas quibusdam, necessitatibus temporibus facere dolorem quidem magni doloremque eveniet dignissimos ea eius nisi harum consectetur aut cum magnam non laboriosam quae architecto maiores, officiis ratione?</div>
+    </section>
+  </section>
+{% endblock main %}
